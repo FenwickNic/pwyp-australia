@@ -1,0 +1,11 @@
+.chevron-right,
+.social .twitter ,
+.social .facebook {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.social .twitter { *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = '&#xf099;&nbsp;'); }
+.social .facebook { *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = '&#xf09a;&nbsp;'); }
+.chevron-right { *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = '&#xf054;&nbsp;'); }
