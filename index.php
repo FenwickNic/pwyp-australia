@@ -6,9 +6,10 @@
 	<meta name="description" content="Publish What You Pay is a global campaign for transparency and accountability in the mining and oil and gas industries. In Australia, the campaign is supported by a coalition of organisations and individuals that are committed to ensuring that citizens of resource-rich countries benefit from their natural wealth.">
 	<meta name="keywords" content="Mining, oil and gas, transparency, accountability, natural wealth">
 	<meta name="author" content="Nicolas Fenwick">
-	<meta name="robots" content="index, follow">
+	<meta name="robots" content="noindex, nofollow">
 	<script src='mis/js/jquery-1.7.1.min.js' type='text/javascript'></script>
 	<script src='mis/js/orangebox.min.js' type='text/javascript'></script>
+	<script src='mis/js/jquery-queryloader.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
 	<!--[if IE 7]>
@@ -242,6 +243,7 @@
 	</div>
 <script type='text/javascript'>
 	oB.settings.contentMaxSize = [1,1];
+
 $(document).ready(function(){
 
 	$('.video-wrapper').mouseenter(function(){
@@ -258,9 +260,12 @@ $(document).ready(function(){
 		var height = $('#about-pwyp').offset();
 		$('html, body').animate({scrollTop:height.top},'5000');	
 	});
+	
+	$("body").queryLoader2();
 
 		
 });
+
 </script>
 </body>
 </html>
