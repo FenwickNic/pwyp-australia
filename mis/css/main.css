@@ -64,6 +64,9 @@ p{
 img{
 	border:0px none transparent;
 }
+*:focus{
+	outline:none;
+}
 /******************************************\
 			General
 \******************************************/
@@ -80,7 +83,7 @@ h1.jumbo{
 	font-family:"Steagal Light",Calibri, Arial,Helvetica,Sans;
 }
 .fat-content{
-	font-family:"Steagal Medium",Calibri Arial, Helvetica, Sans;
+	font-family:"Steagal Medium",Calibri, Arial, Helvetica, Sans;
 	font-size:24px;
 	color:#222;
 	line-height:39px;
@@ -136,19 +139,19 @@ h1.jumbo{
 .form input[type="text"].long{
 	width:270px;
 }
-.form .btn{
+.btn{
 	width:420px;
 	background-color:#0e71b4;
 	color:#fff;
 	padding:10px 30px;
 	margin:5px;
 	cursor:pointer;
-	transition:all 0.25s ease-in-out;
+	transition:background-color 0.25s ease-in-out;
 	box-shadow:0px 0px 3px #555;
 	font-size:20px;
 }
 
-.form .btn:hover{
+.btn:hover{
 	background-color:#00acee;
 }
 
@@ -168,7 +171,7 @@ strong{
 	padding:0px 0px 0px 15px;
 	font-family:"FontAwesome";
 }
-.form .btn:hover .chevron-right:before{
+.btn:hover .chevron-right:before{
 	padding: 0px 0px 0px 20px;
 }
 
@@ -203,7 +206,30 @@ strong{
 	cursor:pointer;
 	background:url(../img/img-globes.png) no-repeat transparent;
 }
+input, 
+textarea{
+	border:1px solid #eee;
+}
+input.error, 
+textarea.error{
+	border:1px solid rgb(148, 4, 17);
+}
+input:focus, 
+textarea:focus{
+	border:1px solid #0e71b4;
+}
 
+input.error:focus, 
+textarea.error:focus{
+	border:1px solid rgb(148, 4, 17);
+	box-shadow:0px 0px 15px rgba(148, 4, 17,0.3);
+}
+
+label.required:after{
+	content:'*';
+	color:rgb(148, 4, 17);
+	padding-left:5px;
+}
 /******************************************\
 			Navigation Bar
 \******************************************/
@@ -718,14 +744,16 @@ background-image:url(../img/bg-white70.png);
 
 
 
-
 /******************************************\
 			FOOTER
 \******************************************/
 #footer{
 	background-color:#fff;
-	height:400px;
+	height:100px;
 	width:100%;
+}
+#footer.act-now{
+	margin-top:100px;
 }
 #footer .top{
 	width:100%;
@@ -741,11 +769,158 @@ background-image:url(../img/bg-white70.png);
 	margin: 0px 50px;
 }
 #footer .logo-black{
+	margin-top:0px;
 	width:225px;
 	height:117px;
 	background-image:url(../img/logo-black.png);
 	background:url(../img/logo-black.png) 0px 0px no-repeat transparent;
 }
+
+
+
+
+/******************************************\
+			ACT NOW
+\******************************************/
+
+.form-wrapper{
+	overflow:hidden;
+	width:90%;
+	height:900px;
+	position:relative;
+	top:30px;
+	margin:auto;
+	font-family:"Steagal", Calibri, Arial, Helvetica, sans;
+	font-size:18px;
+}
+
+.form-wrapper #form{
+	padding-top:30px;
+	width:100%;
+	height:900px;
+	position:absolute;
+	z-index:98;
+	top:0px;
+	left:0px;
+	background-color:#fff;
+}
+.form-wrapper #confirm{
+	padding-top:30px;
+	background-color:#fff;
+	width:100%;
+	height:900px;
+	top:900px;
+	left:0px;
+	position:absolute;
+	z-index:99;
+}
+.form-wrapper #success{
+	text-align:center;
+	padding-top:100px;
+	width:100%;
+	height:900px;
+	top:1800px;
+	left:0px;
+	position:absolute;
+	z-index:100;
+}
+.form-wrapper #success p{
+	margin-top: 50px;
+}
+.form-wrapper textarea{
+	width:98%;
+	height:370px;
+	padding:10px 5px;
+	resize: none; 
+	font-family:"Steagal";
+	text-align:justify;
+	font-size:17px;
+}
+.form-wrapper #form .button-holder .btn:hover{
+	padding:10px 25px 10px 30px;
+}
+
+.form-wrapper .button-holder{
+	float:right;
+}
+
+.form-wrapper .button-holder .btn{
+	width:110px;
+	display:inline;
+}
+.form-wrapper .form-item{
+	margin:10px 0px;
+}
+.form-wrapper .form-item label, .form-wrapper .review .label{
+	font-size:20px;
+	width:150px;
+	text-align:right;
+	display:inline-block;
+	margin-right:20px;
+}
+.form-wrapper .form-item input[type='text']{
+	padding:7px;
+	width:300px;
+}
+.form-wrapper .review .greyed{
+	font-family:"Steagal-Medium";
+	font-size:21px;
+	color: #0e71b4;
+}
+.form-wrapper hr{
+	margin:30px 0px;
+}
+
+.btn.btn-grey{
+	background-color:#999;
+}
+.btn.btn-grey:hover{
+	background-color:#bbb;
+}
+
+.review#message{
+	margin:20px 0px;
+	background-color:#e9e9e9;
+	padding:10px 20px;
+	box-shadow:inset 0px 0px 10px #a9a9a9;
+}
+
+
+.form-wrapper .form-item label.error{
+	width:auto;
+	padding:5px;
+	color:rgb(148, 4, 17);
+	position:relative;
+}
+
+a.btn:hover{
+	color:#fff;
+}
+
+nav.website{
+	height:30px;
+	background-color:#0e71b4;
+	width:100%;
+	position:fixed;
+	z-index:1000;
+}
+
+nav.website .link{
+	font-size:25px;
+	color:#fff;
+}
+nav.website a{
+	margin-left:20%;
+}
+nav.website a span{
+	padding-left:20px;
+}
+nav.website a:hover span.arrow{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
 
 /***************************************************
 			RESPONSIVE
@@ -753,6 +928,9 @@ background-image:url(../img/bg-white70.png);
 
 
 @media screen and (max-width: 1366px) {
+	#footer .logo-black{
+		margin-top:100px;
+	}
 	#footer span{
 		float:none;
 		text-align:center;
@@ -819,21 +997,23 @@ background-image:url(../img/bg-white70.png);
 	}
 }
 @media screen and (max-width: 960px) {
-	.section .section-wrapper .content, .fat-content{width:98% !important;}
-	#time-for-australia-to-act .content .text p {width:100% !important;}
+	.section .section-wrapper .content, .fat-content{
+		width:98% !important;
+	}
+	#time-for-australia-to-act .content .text p {
+		width:100% !important;
+	}
 	.section-wrapper{
 		width:600px;
 		margin:auto;
 	}
-	
 	#mission .logo{
-	background:url(../img/bg-pwypaustralia-small.png) no-repeat;
-	position:relative;
-	top:50px;
-	width:178px;
-	height:92px;	
-}
-	
+		background:url(../img/bg-pwypaustralia-small.png) no-repeat;
+		position:relative;
+		top:50px;
+		width:178px;
+		height:92px;	
+	}
 	#mission h1.jumbo{
 		font-size:50px;
 		text-align:center;
@@ -859,7 +1039,6 @@ background-image:url(../img/bg-white70.png);
 	}
 	#secrecy-and-corruption{
 		height:700px;
-	
 	}
 	#continent-of-riches .bottom{
 		top:4662px;
@@ -881,20 +1060,19 @@ background-image:url(../img/bg-white70.png);
 		float:none;
 	}
 	#about-pwyp .globe{
-	color:#fff;
-	position:relative;
-	top:300px;
-	text-align:left;
-	clear:both;
-	right:0px;
-	float:none;
-	width: 350px;
-}
-
-.globe .globe-ghana{
-	clear:both;
-	float:none;
-}
+		color:#fff;
+		position:relative;
+		top:300px;
+		text-align:left;
+		clear:both;
+		right:0px;
+		float:none;
+		width: 350px;
+	}
+	.globe .globe-ghana{
+		clear:both;
+		float:none;
+	}
 	#nav-bar .links{
 		margin:7px 2px;
 	}
@@ -907,13 +1085,57 @@ background-image:url(../img/bg-white70.png);
 		margin:0px 2px;
 		font-size:16px;
 	}
-	@media screen and (max-width: 650px) {
-		#nav-bar{
-			width:100%;
-			left:0px;
-		}
+	.form-wrapper .form-item label.error{
+		font-size:10px;
 	}
+	.form-wrapper .form-item input[type='text']{
+		width:150px;
+	}
+}
+@media screen and (max-width: 650px) {
+	#nav-bar{
+		width:100%;
+		left:0px;
+	}
+	.form-wrapper{
+		height:1100px;
+	}
+	.form-wrapper #form{
+		height:1100px;
+	}
+	.form-wrapper #confirm{
+		height:1100px;
+		top:1100px;
+	}
+	.form-wrapper #success{
+		height:1100px;
+		top:2200px;
+	}
+	#message .value{
+		font-size:12px;
+	}
+	form-wrapper .review .greyed{
+		font-size:13px;
+	}
+	.form-wrapper{
+		font-size:12px;
+	}
+}
+
 @media screen and (max-width: 600px) {
+nav.website .link{
+	font-size:18px;
+}
+nav.website a{
+		margin-left:0px;
+}
+.form-wrapper .form-item label, .form-wrapper .review .label{
+	font-size:12px;
+	width:auto;
+}
+h1.jumbo{
+	font-size:30px;
+}
 #mission .logo{
 	top:30px;
 }
@@ -954,10 +1176,10 @@ margin: 0px 0px 10px 0px;
 		width:80%;
 		margin-top:0px;
 	}
-	.form input[type="text"] , #submit{
+	.form input[type="text"] , .submit{
 		width:90% !important;
 	}
-	#submit{
+	.submit{
 		padding:10px;
 	}
 	#continent-of-riches .section-wrapper > div .title{
@@ -969,5 +1191,4 @@ margin: 0px 0px 10px 0px;
 	#learn-more{
 		height:1300px;
 	}
-}
 }

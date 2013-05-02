@@ -48,8 +48,8 @@
 				<div class='title'>LEARN MORE</div>
 				<div class='content'>Learn about the issue and how transparency can help end corruption and poverty in resource-rich countries. Download and read our booklet.</div>
 				<div class='booklet'>
-					<a href='mis/files/PWYP_booklet.pdf' data-ob="lightbox"><img src='mis/img/img-booklet1.jpg' alt='Read PWYP booklet'></a>
-					<a href='mis/files/PWYP_booklet.pdf' data-ob="lightbox"><img src='mis/img/img-booklet2.jpg' alt='Read PWYP booklet'></a>
+					<a href='mis/files/PWYP_booklet_lo_res.pdf' data-ob="lightbox"><img src='mis/img/img-booklet1.jpg' alt='Read PWYP booklet'></a>
+					<a href='mis/files/PWYP_booklet_lo_res.pdf' data-ob="lightbox"><img src='mis/img/img-booklet2.jpg' alt='Read PWYP booklet'></a>
 				</div>
 			</div>
 			<div class='pull-right wider'>
@@ -58,14 +58,14 @@
 				<div class='form'>
 					<form>
 						<div class='row'>
-							<input type='text' class='medium' name='firstname' value='' placeholder='First Name'></input>
-							<input type='text' class='medium' name='lastname' placeholder='Last Name'></input>
+							<input type='text' class='medium' name='firstname' value='' placeholder='First Name'/>
+							<input type='text' class='medium' name='lastname' placeholder='Last Name'/>
 						</div>
 						<div class='row'>
-							<input type='text' class='long' name='email' placeholder='Email'></input>
-							<input type='text' class='short' name='postcode' placeholder='Post Code'></input>
+							<input type='text' class='long' name='email' placeholder='Email'/>
+							<input type='text' class='short' name='postcode' placeholder='Post Code'/>
 						</div>
-						<div id='submit' class='btn'>Call on the Australian Government to <strong>act</strong><span class='chevron-right'></span></div>
+						<div class='btn submit'>Call on the Australian Government to <strong>act</strong><span class='chevron-right'></span></div>
 					</form>
 				</div>
 			</div>
@@ -129,7 +129,7 @@
 				<img src='mis/img/img-threequarter.png' alt="One quarter of Africa's income is lost because of corruption."/>
 			</span>
 			<span class='pull-left'>
-				<img src='mis/img/img-corruption.png'/ alt="Corruption leads to infrastructure and hygiene issues.">
+				<img src='mis/img/img-corruption.png' alt="Corruption leads to infrastructure and hygiene issues.">
 			</span>
 			<span class='clear'></span>
 			</div>
@@ -181,14 +181,14 @@
 					<div class='form'>
 					<form>
 						<div class='row'>
-							<input type='text' class='medium' name='firstname' value='' placeholder='First Name'></input>
-							<input type='text' class='medium' name='lastname' placeholder='Last Name'></input>
+							<input type='text' class='medium' name='firstname' value='' placeholder='First Name'/>
+							<input type='text' class='medium' name='lastname' placeholder='Last Name'/>
 						</div>
 						<div class='row'>
-							<input type='text' class='long' name='email' placeholder='Email'></input>
-							<input type='text' class='short' name='postcode' placeholder='Post Code'></input>
+							<input type='text' class='long' name='email' placeholder='Email'/>
+							<input type='text' class='short' name='postcode' placeholder='Post Code'/>
 						</div>
-						<div id='submit' class='btn'>Call on the Australian Government to <strong>act</strong><span class='chevron-right'></span></div>
+						<div class='btn submit'>Call on the Australian Government to <strong>act</strong><span class='chevron-right'></span></div>
 					</form>
 				</div>
 				</div>
@@ -236,7 +236,7 @@
 		</span>
 		<span class='pull-right fat-content'>
 			For a list of member organisations, the latest news and resources please visit:<br/>
-			<a href='#' onclick='retrun false'>www.publishwhatyoupay.org/where/coalitions/australia</a>
+			<a href='http://www.publishwhatyoupay.org/where/coalitions/australia'>www.publishwhatyoupay.org/where/coalitions/australia</a>
 		</span>
 		<span class='clear'>
 		</span>
@@ -245,7 +245,15 @@
 	oB.settings.contentMaxSize = [1,1];
 
 $(document).ready(function(){
-
+	$('.form .btn').click(function(){
+		var firstname = $(this).parents('.form').find('input[name="firstname"]').val();
+		var lastname = $(this).parents('.form').find('input[name="lastname"]').val();
+		var postcode = $(this).parents('.form').find('input[name="postcode"]').val();
+		var email = $(this).parents('.form').find('input[name="email"]').val();
+		
+		window.location.href = "act-now.php?firstname="+firstname+"&lastname="+lastname+"&postcode="+postcode+"&email="+email;
+	});
+	
 	$('.video-wrapper').mouseenter(function(){
 		$('.description-hover').animate({top:'0px'});
 	}).mouseleave(function(){
