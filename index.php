@@ -7,6 +7,7 @@
 	<meta name="keywords" content="Mining, oil and gas, transparency, accountability, natural wealth">
 	<meta name="author" content="Nicolas Fenwick">
 	<meta name="robots" content="noindex, nofollow">
+	<link type="image/x-icon" href="mis/img/favicon.ico" rel="shortcut icon">
 	<script src='mis/js/jquery-1.7.1.min.js' type='text/javascript'></script>
 	<script src='mis/js/orangebox.min.js' type='text/javascript'></script>
 	<script src='mis/js/jquery-queryloader.js' type='text/javascript'></script>
@@ -98,7 +99,7 @@
 				<div class='title'>SECRECY AND CORRUPTION</div>
 
 				<span class='pull-right'>
-					<strong>Campaigning for transparency in Niger</strong>
+					<div class='subtitle'>CAMPAIGNING FOR TRANSPARENCY IN NIGER</div>
 					<a href='http://www.youtube.com/watch?v=LBqQQ3MVnBw' data-ob="lightbox">
 						<div class='video-wrapper'>
 							<div class='img-video-niger'></div>
@@ -162,8 +163,7 @@
 			<div class='globe'>
 				<div class='description pull-right'>
 					The world's largest open pit gold mine, dubbed<br/>
-					'Super Pit', Kalgoorlie, Western Australia.<br/>
-					Photo: Shutterstock
+					'Super Pit', Kalgoorlie, Western Australia.
 				</div>
 				<div class='globe-australia pull-left globe-image'></div>
 			</div>
@@ -206,8 +206,7 @@
 			<div class='globe'>
 				<div class='globe-solomon globe-image'></div>
 				<div class='description'>
-					Evan Nancy and Pauline Tsira play downstream<br/>from the gold mine at Be Muta village in the<br/>Solomon Islands<br/>
-					Photo: Lara McKinley / Oxfam Australia.
+					Evan Nancy and Pauline Tsira play downstream<br/>from the gold mine at Be Muta village in the<br/>Solomon Islands.
 				</div>
 			</div>
 		</div>
@@ -222,8 +221,7 @@
 		<div class='globe pull-right'>
 			<div class='globe-ghana globe-image'></div>
 			<div class='description'>
-				Godfried Ofori,  a member of the Concerned<br/> Citizens association of Presta, Ghana, looks out<br/> over an open pit at the Bogoso / Prestea Mine.<br/>
-				Photo: Jane Hahn/ Oxfam America.
+				Godfried Ofori, a member of the Concerned<br/> Citizens association of Presta, Ghana, looks out<br/> over an open pit at the Bogoso / Prestea Mine.
 			</div>
 		</div>			
 		</div>
@@ -234,7 +232,7 @@
 		<div class='top'></div>
 		<span class='pull-left logo-black'>
 		</span>
-		<span class='pull-right fat-content'>
+		<span class='pull-right bigger'>
 			For a list of member organisations, the latest news and resources please visit:<br/>
 			<a href='http://www.publishwhatyoupay.org/where/coalitions/australia'>www.publishwhatyoupay.org/where/coalitions/australia</a>
 		</span>

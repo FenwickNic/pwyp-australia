@@ -25,7 +25,9 @@
 	<meta name="keywords" content="Mining, oil and gas, transparency, accountability, natural wealth">
 	<meta name="author" content="Nicolas Fenwick">
 	<meta name="robots" content="noindex, nofollow">
+		<link type="image/x-icon" href="mis/img/favicon.ico" rel="shortcut icon">
 	<script src='mis/js/jquery-1.7.1.min.js' type='text/javascript'></script>
+	<script src='mis/js/jquery.knob.js' type='text/javascript'></script>
 	<script src='mis/js/jquery.validate.min.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
@@ -41,11 +43,15 @@
 		</a>
 	</nav>
 	<div class='section-wrapper'>
-		<div style='padding-top:50px'><h1>Call on the Australian Government to act</h1>
+		<div style='padding-top:50px;display:inline-block;width:75%;text-align:justify;margin-right:5%'><h1>Call on the Australian Government to act</h1>
 		<p>Income from minerals and oil and gas should be one of the greatest sources of wealth for resource-rich developing countries. But almost 3.5 billion people living in these countries often don’t receive it.</p>
 		<p>Laws similar to that recently introduced by the United States Government and forthcoming in the European Union could change this. These laws require mining, oil and gas companies to report the taxes and royalties they pay government in the countries where they are mining or extracting oil and gas. Such legislation could help citizens of developing countries to hold their governments to account for these revenues.</p>
 		<p>Please send a message to the Treasurer, Wayne Swan and Assistant Treasurer, David Bradbury, to say that you would like to see similar legislation introduced in Australia.</p>
 		
+		</div>
+		<div class='chart-wrapper' style='display:inline-block;text-align:center;'>
+			<input type='text' value='100' class='chart'/>
+			<span class='signatures' style='font-size:30px;display:block;'></span> <span>signatures</span>
 		</div>
 	<div class='form-wrapper'>	
 		<form id='form'>
@@ -97,6 +103,7 @@ This is a step towards reducing tax evasion and other forms of corruption by mak
 				<span class='value'></span>
 			</div>
 			<div class='button-holder'>
+				<div id='loader'></div>
 				<div class='btn btn-grey back'>BACK</div>
 				<div class='btn next'>SEND</div>
 			</div>
@@ -113,7 +120,7 @@ This is a step towards reducing tax evasion and other forms of corruption by mak
 				Please ask your friends or family to support this initiative too.
 			</p>
 			<p>
-				<a href="/index.php" class='btn'>BACK TO THE WEBSITE</a>
+				<a href="index.php" class='btn'>BACK TO THE WEBSITE</a>
 			</p>
 		</div>
 	</div>
@@ -132,36 +139,77 @@ This is a step towards reducing tax evasion and other forms of corruption by mak
 
 <script type='text/javascript'>
 $(document).ready(function(){
+	$('#loader').hide();
+	
 	$('#form').validate({
-			rules:{
-				'form-firstname':{
-					required:true
-				},
-				'form-lastname':{
-					required:true
-				},
-				'form-postcode':{
-					required:true
-				},
-				'form-email':{
-					required:true,
-					email:true
-				},
-				'form-message':{
-					required:true
-				}
+		rules:{
+			'form-firstname':{
+				required:true
 			},
-			messages:{
-				'form-firstname':"Please enter your first name.",
-				'form-lastname':"Please enter your last name.",
-				'form-postcode':"We need your postcode.",
-				'form-email':"Please enter a valid email address.",
-				'form-message':"Please enter your message."
+			'form-lastname':{
+				required:true
 			},
-			showErrors: function(errorMap, errorList) {
-				this.defaultShowErrors();
+			'form-postcode':{
+				required:true
+			},
+			'form-email':{
+				required:true,
+				email:true
+			},
+			'form-message':{
+				required:true
 			}
-		});
+		},
+		messages:{
+			'form-firstname':"Please enter your first name.",
+			'form-lastname':"Please enter your last name.",
+			'form-postcode':"We need your postcode.",
+			'form-email':"Please enter a valid email address.",
+			'form-message':"Please enter your message."
+		},
+		showErrors: function(errorMap, errorList) {
+			this.defaultShowErrors();
+		}
+	});
+	
+	var data = {};
+	data.action = 'count';
+	
+	var jsonRequest = JSON.stringify(data);
+	
+	$.ajax({
+		url: 'submit.php',
+		type: 'post',
+		dataType: 'json',
+		data: {data : jsonRequest},
+		success: function(response) {
+			if(response.status == 'success'){
+				$(".chart").val(response.count);
+				$('.signatures').text(response.count);
+				var max = 1000;
+				var i = 1;
+				while(response.count > (max * i) - 5){
+					max = max*2;
+					i++;
+				}
+				$(".chart").knob({
+					'min':0
+					,'max':max
+					,'readOnly':true
+					,'width':100
+					,'height':100
+					,'fgColor':'#0e71b4'
+					,'inputColor':'#0e71b4'
+				});
+			}
+		},
+		error:function( req, status, err ) {
+			console.log( 'Error in the request', status, err );
+			$('.chart-wrapper').hide();
+		}
+	});
+	
+	
 	//Button form next
 	$('#form .next').click(function(){
 		if($('#form').valid()){
@@ -193,33 +241,46 @@ $(document).ready(function(){
 	
 	//Button confirm Next
 	$('#confirm .next').click(function(){
-		var data = {};
-		data.action = 'submit';
-		data.firstname = $('#confirm input[name="firstname"]').val();
-		data.lastname = $('#confirm input[name="lastname"]').val();
-		data.postcode = $('#confirm input[name="postcode"]').val();
-		data.email = $('#confirm input[name="email"]').val();
-		data.message = $('#confirm input[name="message"]').val();
+		if($(this).not('.disabled')){
+			$('#loader').show();
+			$('.btn').addClass('disabled');
+			var data = {};
+			data.action = 'submit';
+			data.firstname = $('#confirm input[name="firstname"]').val();
+			data.lastname = $('#confirm input[name="lastname"]').val();
+			data.postcode = $('#confirm input[name="postcode"]').val();
+			data.email = $('#confirm input[name="email"]').val();
+			data.message = $('#confirm input[name="message"]').val();
 		
-		var jsonRequest = JSON.stringify(data);
+			var jsonRequest = JSON.stringify(data);
 		
-		//Send the request
-		$.ajax({
-			url: 'submit.php',
-			type: 'post',
-			dataType: 'json',
-			data: {data : jsonRequest},
-			success: function(response) {
-				if(response.status == 'success'){
-					$('#success').animate({top:'0px'});
-					$('#form').remove();
-					$('#confirm').remove();
+			//Send the request
+			$.ajax({
+				url: 'submit.php',
+				type: 'post',
+				dataType: 'json',
+				data: {data : jsonRequest},
+				success: function(response) {
+					if(response.status == 'success'){
+						$('#success').animate({top:'0px'});
+						$('#form').remove();
+						$('#confirm').remove();
+						$('#loader').hide();
+						$('.btn').removeClass('disabled');
+						$(".chart").val(Number(response.count)).trigger('change');
+						$('.signatures').text(response.count);
+					}else{
+						$('#loader').hide();
+						$('.btn').removeClass('disabled');
+					}
+				},
+				error:function( req, status, err ) {
+					console.log( 'Error in the request', status, err );
+					$('#loader').hide();
+					$('.btn').removeClass('disabled');
 				}
-			},
-			error:function( req, status, err ) {
-				console.log( 'Error in the request', status, err );
-			}
-		});
+			});
+		}
 	});
 	
 	//Button confirm Back

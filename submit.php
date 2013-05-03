@@ -3,21 +3,36 @@
 	
 	define('DEBUGMODE',0);
 	
-	define('SMTPHOST','ssl://smtp.gmail.com');
+	define('SMTPHOST','ssl://smtp.gmail.com'); 			//Set the SMTP Address
 	define('SMTPPORT','465');
 	define('SMTPUSERNAME','nicolas.fenwick');
 	define('SMTPPASSWORD','Nic0las0319');
 	
-	define('HOST','localhost:3306');
+	define('HOST','localhost:3306');					//Set the Database
 	define('DBNAME','db1_pwypaustralia');
 	define('USER','root');
 	define('PASSWORD','');
-
+	
+	/**********************************
+	**PRODUCTION
+	**
+	************************************/
+	/**define('SMTPHOST','localhost'); 			//Set the SMTP Address
+	define('SMTPPORT','25');
+	define('SMTPUSERNAME','');
+	define('SMTPPASSWORD','8FH5wPWMh2neM3Cq');
+	
+	define('HOST','localhost');					//Set the Database
+	define('DBNAME','db1_pwypaustralia');
+	define('USER','pwypadmin');
+	define('PASSWORD','8FH5wPWMh2neM3Cq');**/
+	
+	//////////////////////////////////////////////////////
+	
 	define('ERROR1', 'Database Connection Error');
 	define('ERROR2', 'Invalid Stored Procedure');
 	define('ERROR3', 'Invalid Request');
 	define('ERROR4', 'Email not sent');
-
 
 $response = array();
 if (!isset($_POST['data']) ){
@@ -33,6 +48,7 @@ $business = new Engine();
 $action = $data->action;
 if($action == 'count'){
 	echo json_encode($business->getcount());
+	return;
 }elseif($action == 'submit'){
 	$firstname = $data->firstname;
 	$lastname = $data->lastname;
@@ -42,19 +58,28 @@ if($action == 'count'){
 	if($firstname != 'Test' && $lastname != 'Test'){
 		$response = $business->insert($firstname, $lastname, $postcode, $email, $message);
 		if($response['status'] == 'success'){
+			
+			$resultCount = $business->getcount();
+			$count='';
+			if($resultCount['status'] == 'success'){
+				$count = $resultCount['count'];
+			}
+			$response['count'] = $count;
+	
 			$response['error'] = '';
 			if(!$business->sendThanksEmail($email,$message,$firstname, $lastname)){
 				$response['error'] .= ERROR4.' THANKS';
 			}
-			if($business->sendTreasurerEmail($email,$message,$firstname, $lastname)){
+			if(!$business->sendTreasurerEmail($email,$message,$firstname, $lastname)){
 				$response['error'] .= ERROR4.' TREASURER';
 			}
-			if($business->sendAssistantTreasurerEmail($email,$message,$firstname, $lastname)){
+			if(!$business->sendAssistantTreasurerEmail($email,$message,$firstname, $lastname)){
 				$response['error'] .= ERROR4.' ASSISTANT';
 			}
-			if($business->sendPWYPEmail($email,$message,$firstname, $lastname)){
+			if(!$business->sendPWYPEmail($email,$message,$firstname, $lastname,$count)){
 				$response['error'] .= ERROR4.' PWYP';
 			}
+					
 		}
 	}else{
 		$response['status'] = 'success';
@@ -69,6 +94,10 @@ class Engine{
 	
 	private $connectionHandler;
 	private $mailHandler;
+	
+	private $treasurerAddress = 'nicolas.fenwick@gmail.com';			//CHANGE ADDRESS HERE
+	private $assistantTreasurer = 'nicolas.fenwick@gmail.com';
+	private $PWYPAddress = 'nicolas.fenwick@gmail.com';
 	
 	function __construct(){
 	//Create database connection
@@ -103,9 +132,10 @@ class Engine{
 			$local_response['error'] = ERROR2;
 			return $local_response;
 		}else{
-			if ($res = $this->connectionHandler->store_result()) {
-				$result = $res->fetch_all();
-				$local_response['count'] = $result[0][0];
+			if ($this->connectionHandler->field_count) {
+				$res = $this->connectionHandler->store_result();
+				$result = $res->fetch_assoc();
+				$local_response['count'] = $result['count(*)'];
 				$local_response['status'] = 'success';
 				$res->free();
 				return $local_response;			
@@ -152,7 +182,7 @@ class Engine{
 		
 		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
 		$this->mailHandler->AddReplyTo($email, $firstname.' '.$lastname);
-		$this->mailHandler->AddAddress('nicolas.fenwick@gmail.com');						//Change Address Here
+		$this->mailHandler->AddAddress($this->treasurerAddress);
 		$this->mailHandler->Subject = 'Please act and bring transparency to the mining, oil and gas industries';
 		$this->mailHandler->MsgHTML($messageToSend);
 		$this->mailHandler->AltBody = strip_tags($messageToSend);
@@ -168,7 +198,7 @@ class Engine{
 		
 		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
 		$this->mailHandler->AddReplyTo($email, $firstname.' '.$lastname);
-		$this->mailHandler->AddAddress('nicolas.fenwick@gmail.com');						//Change Address Here
+		$this->mailHandler->AddAddress($this->assistantTreasurer);
 		$this->mailHandler->Subject = 'Please act and bring transparency to the mining, oil and gas industries';
 		$this->mailHandler->MsgHTML($messageToSend);
 		$this->mailHandler->AltBody = strip_tags($messageToSend);
@@ -179,11 +209,9 @@ class Engine{
 		}
 	}
 	
-	function sendPWYPEmail($email,$message,$firstname, $lastname){
-		$result = $this->getcount();
+	function sendPWYPEmail($email,$message,$firstname, $lastname,$count){
 		$messageCount = '';
-		if($result['status']=='success'){
-			$count = $result['count'];
+		if(is_numeric($count)){
 			$messageCount = "<p>The action has been taken <strong> ".$count." </strong> times.</p>";
 		}
 		
@@ -191,7 +219,7 @@ class Engine{
 		
 		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
 		$this->mailHandler->AddReplyTo($email,$firstname.' '.$lastname);
-		$this->mailHandler->AddAddress('nicolas.fenwick@gmail.com');						//Change Address Here
+		$this->mailHandler->AddAddress($this->PWYPAddress);
 		$this->mailHandler->Subject = $firstname.' '.$lastname.' has taken the e-action';
 		$this->mailHandler->MsgHTML($messageToSend);
 		$this->mailHandler->AltBody = strip_tags($messageToSend);

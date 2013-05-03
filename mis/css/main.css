@@ -444,8 +444,9 @@ label.required:after{
 	top:-65px;
 	z-index:10;
 }
-#secrecy-and-corruption strong{
-	font-size:25px;
+#secrecy-and-corruption .subtitle{
+	font-size:22px;
+	font-family: Steagal,Calibri, Arial,Helvetica,Sans;
 }
 
 #secrecy-and-corruption .content span.pull-right,
@@ -454,6 +455,8 @@ label.required:after{
 	width:49%;
 	line-height:26px;
 	font-size:18px;
+}
+#secrecy-and-corruption span.pull-left{
 	font-family:"Steagal Light", Arial, Helvetica, Sans;
 }
 #secrecy-and-corruption span.pull-right{
@@ -641,7 +644,7 @@ background-image:url(../img/bg-white60.png);
 
 #stand-with-us-and-speak-out .social{
 	width:100%;
-	font-family: "Steagal Light Italic", Arial, Helvetica, sans;
+	font-family: "Steagal Light", Arial, Helvetica, sans;
 	font-style:italic;
 	font-size:14px;
 	margin:20px 0px;
@@ -700,7 +703,6 @@ background-image:url(../img/bg-white60.png);
 	background:url(../img/bg-aboutpwyp.jpg) 50% 0px no-repeat transparent;
 	background-size: cover;
 	height:1000px;
-	width:100%;
 }
 
 #about-pwyp .fat-content{
@@ -719,9 +721,9 @@ background-image:url(../img/bg-white60.png);
 	top:700px;
 	right: -500px;
 	text-align:left;
+	width: 400px;
 }
 #about-pwyp .globe .description{
-background-image:url(../img/bg-white70.png);
 	background:url(../img/bg-white70.png) 0px 0px repeat transparent;
 	color:#222;
 	padding:10px;
@@ -776,7 +778,11 @@ background-image:url(../img/bg-white70.png);
 	background:url(../img/logo-black.png) 0px 0px no-repeat transparent;
 }
 
-
+#footer .bigger{
+	font-size:26px;
+	margin:30px auto;
+	padding-bottom:30px;
+}
 
 
 /******************************************\
@@ -829,7 +835,7 @@ background-image:url(../img/bg-white70.png);
 }
 .form-wrapper textarea{
 	width:98%;
-	height:370px;
+	height:380px;
 	padding:10px 5px;
 	resize: none; 
 	font-family:"Steagal";
@@ -842,6 +848,7 @@ background-image:url(../img/bg-white70.png);
 
 .form-wrapper .button-holder{
 	float:right;
+	height:50px;
 }
 
 .form-wrapper .button-holder .btn{
@@ -920,6 +927,15 @@ nav.website a:hover span.arrow{
 	padding-right:10px;
 }
 
+#loader{
+	background:url(../img/img-loading.gif) 0px 0px no-repeat transparent;
+	display:inline-block;
+	position:relative;
+	width:32px;
+	height:32px;
+	top:10px;
+}
+
 
 
 /***************************************************
@@ -938,7 +954,7 @@ nav.website a:hover span.arrow{
 		display:block;
 		clear:both;
 	}
-	#footer .fat-content{
+	#footer .bigger{
 		width:700px;
 	}
 }
@@ -995,9 +1011,17 @@ nav.website a:hover span.arrow{
 	#continent-of-riches .bottom{
 		top:3962px;
 	}
+	
+	#about-pwyp .globe{
+		right:0px;
+		top:200px;
+	}
 }
 @media screen and (max-width: 960px) {
-	.section .section-wrapper .content, .fat-content{
+#secrecy-and-corruption span.pull-right {
+	text-align:left;
+}
+	.section .section-wrapper .content, .fat-content,.bigger{
 		width:98% !important;
 	}
 	#time-for-australia-to-act .content .text p {
@@ -1096,6 +1120,7 @@ nav.website a:hover span.arrow{
 	#nav-bar{
 		width:100%;
 		left:0px;
+		top:0px;
 	}
 	.form-wrapper{
 		height:1100px;
@@ -1159,7 +1184,7 @@ margin: 0px 0px 10px 0px;
 	.globe .description{
 		display:none;
 	}
-	#footer .fat-content{
+	#footer .bigger{
 		width:100% !important;
 	}
 	.section-wrapper > div .title ,.section-wrapper > div .content {
@@ -1169,8 +1194,8 @@ margin: 0px 0px 10px 0px;
 	.section-wrapper > div .title{
 		font-size:30px;
 	}
-	#secrecy-and-corruption strong{
-		font-size:20px !important;
+	#secrecy-and-corruption .subtitle{
+		font-size:17px !important;
 	}
 	.form{
 		width:80%;
