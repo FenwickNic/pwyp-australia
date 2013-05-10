@@ -653,6 +653,19 @@ background-image:url(../img/bg-white60.png);
 #stand-with-us-and-speak-out .social div{
 	width:48%;
 	cursor:pointer;
+	transition: all 0.25s ease-in-out;
+}
+
+#stand-with-us-and-speak-out .social div:hover {
+	text-shadow: 1px 1px 0px #000;
+}
+#stand-with-us-and-speak-out .social div .social-link-text{
+	color:#fff;
+	transition: color 0.25s ease-in-out;
+}
+#stand-with-us-and-speak-out .social div:hover .social-link-text{
+	text-shadow: 1px 1px 0px #000;
+	color:#6DA6E9;
 }
 
 #stand-with-us-and-speak-out .social .facebook{
@@ -711,7 +724,7 @@ background-image:url(../img/bg-white60.png);
 	background:url(../img/bg-white70.png) 0px 0px repeat transparent;
 	font-weight:bold;
 	position:relative;
-	top:50px;
+	top:100px;
 	float:right;
 }
 
@@ -754,9 +767,6 @@ background-image:url(../img/bg-white60.png);
 	height:100px;
 	width:100%;
 }
-#footer.act-now{
-	margin-top:100px;
-}
 #footer .top{
 	width:100%;
 	height:90px;
@@ -770,36 +780,60 @@ background-image:url(../img/bg-white60.png);
 #footer span{
 	margin: 0px 50px;
 }
+
 #footer .logo-black{
 	margin-top:0px;
+	margin-right:0px;
 	width:225px;
 	height:117px;
 	background-image:url(../img/logo-black.png);
 	background:url(../img/logo-black.png) 0px 0px no-repeat transparent;
 }
 
-#footer .bigger{
-	font-size:26px;
-	margin:30px auto;
-	padding-bottom:30px;
+#footer .fat-content{
+	margin:0px 20px 40px;
 }
 
 
 /******************************************\
 			ACT NOW
 \******************************************/
+body#act-now .content{
+	background: url(../img/bg-hole.jpg) 0px 0px transparent no-repeat;
+		background-size: cover;
+}
+body#act-now .fillette{
+	background: url(../img/fillette.png) 0px 0px transparent no-repeat;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	width:288px;
+	height:672px;
+}
+
+body#act-now hr{
+	border-color:#fff;
+	background-color:#ff0000;
+}
 
 .form-wrapper{
 	overflow:hidden;
-	width:90%;
+	width:100%;
 	height:900px;
 	position:relative;
 	top:30px;
 	margin:auto;
 	font-family:"Steagal", Calibri, Arial, Helvetica, sans;
 	font-size:18px;
+	background-color:rgba(255, 255, 255,0.9);
+	/*box-shadow: 6px -6px 6px rgba(188, 200, 219,0.4);
+	border:1px solid #6A96D8;*/
 }
-
+.container-top{
+	background-color:rgba(255, 255, 255,0.9);
+	/*box-shadow: 0px 0px 6px rgba(188, 200, 219,0.4);
+	border:1px solid #6A96D8;*/
+}
 .form-wrapper #form{
 	padding-top:30px;
 	width:100%;
@@ -808,7 +842,6 @@ background-image:url(../img/bg-white60.png);
 	z-index:98;
 	top:0px;
 	left:0px;
-	background-color:#fff;
 }
 .form-wrapper #confirm{
 	padding-top:30px;
@@ -834,7 +867,7 @@ background-image:url(../img/bg-white60.png);
 	margin-top: 50px;
 }
 .form-wrapper textarea{
-	width:98%;
+	width:100%;
 	height:380px;
 	padding:10px 5px;
 	resize: none; 
@@ -950,7 +983,7 @@ nav.website a:hover span.arrow{
 	#footer span{
 		float:none;
 		text-align:center;
-		margin:auto;
+		margin:30px auto !important;
 		display:block;
 		clear:both;
 	}

@@ -31,28 +31,44 @@
 	<script src='mis/js/jquery.validate.min.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-40671337-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 	<!--[if IE 7]>
 		<link rel="stylesheet" media="all" href="mis/css/fontawesome-ie7.css" />
 	<![endif]-->
 </head>
-<body>
+<body id='act-now'>
 	<nav class='website'>
 		<a href='index.php'>
 			<span class='arrow'><img src='mis/img/img-arrow-left.png' alt='arrow left'></span>
 			<span class='link'>BACK TO THE WEBSITE</span>
 		</a>
 	</nav>
+	<div class='content'>
+		<!--div class='fillette'></div-->
 	<div class='section-wrapper'>
-		<div style='padding-top:50px;display:inline-block;width:75%;text-align:justify;margin-right:5%'><h1>Call on the Australian Government to act</h1>
-		<p>Income from minerals and oil and gas should be one of the greatest sources of wealth for resource-rich developing countries. But almost 3.5 billion people living in these countries often don’t receive it.</p>
-		<p>Laws similar to that recently introduced by the United States Government and forthcoming in the European Union could change this. These laws require mining, oil and gas companies to report the taxes and royalties they pay government in the countries where they are mining or extracting oil and gas. Such legislation could help citizens of developing countries to hold their governments to account for these revenues.</p>
-		<p>Please send a message to the Treasurer, Wayne Swan and Assistant Treasurer, David Bradbury, to say that you would like to see similar legislation introduced in Australia.</p>
-		
+		<div class='container-top'>
+			<div style='padding-top:50px;display:inline-block;width:70%;text-align:justify;margin:0px 5%'><h1>Call on the Australian Government to act</h1>
+			<p>Income from minerals and oil and gas should be one of the greatest sources of wealth for resource-rich developing countries. But almost 3.5 billion people living in these countries often don’t receive it.</p>
+			<p>Laws similar to that recently introduced by the United States Government and forthcoming in the European Union could change this. These laws require mining, oil and gas companies to report the taxes and royalties they pay government in the countries where they are mining or extracting oil and gas. Such legislation could help citizens of developing countries to hold their governments to account for these revenues.</p>
+			<p>Please send a message to the Treasurer, Wayne Swan and Assistant Treasurer, David Bradbury, to say that you would like to see similar legislation introduced in Australia.</p>
+			</div>
+			<div class='chart-wrapper' style='display:inline-block;text-align:center;'>
+				<div>GOAL:<span id='goal'></span></div>
+				<input type='text' value='100' class='chart'/>
+				<span class='signatures' style='font-size:30px;display:block;'></span> <span>signatures</span>
+			</div>
 		</div>
-		<div class='chart-wrapper' style='display:inline-block;text-align:center;'>
-			<input type='text' value='100' class='chart'/>
-			<span class='signatures' style='font-size:30px;display:block;'></span> <span>signatures</span>
-		</div>
+	
 	<div class='form-wrapper'>	
 		<form id='form'>
 			<div class='form-item'>
@@ -125,12 +141,14 @@ This is a step towards reducing tax evasion and other forms of corruption by mak
 		</div>
 	</div>
 		</div>
+		</div>
 	<div class='clear'></div>
 	<div class='section act-now' id='footer'>
+		<div class='top'></div>
 		<span class='pull-left logo-black'>
 		</span>
 		<span class='pull-right fat-content'>
-			For a list of member organisations, the latest news and resources please visit:<br/>
+			FOR A LIST OF MEMBER ORGANISATIONS, THE LATEST NEWS AND RESOURCES PLEASE VISIT:<br/>
 			<a href='http://www.publishwhatyoupay.org/where/coalitions/australia'>www.publishwhatyoupay.org/where/coalitions/australia</a>
 		</span>
 		<span class='clear'>
@@ -192,6 +210,7 @@ $(document).ready(function(){
 					max = max*2;
 					i++;
 				}
+				$('#goal').html('<h1>'+max+'</h1>');
 				$(".chart").knob({
 					'min':0
 					,'max':max

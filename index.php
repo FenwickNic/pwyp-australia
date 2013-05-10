@@ -13,6 +13,17 @@
 	<script src='mis/js/jquery-queryloader.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-40671337-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 	<!--[if IE 7]>
 		<link rel="stylesheet" media="all" href="mis/css/fontawesome-ie7.css" />
 	<![endif]-->
@@ -27,8 +38,8 @@
 			<li><a href='act-now.php'>ACT NOW</a></li>
 		</ul>
 		<ul class='social'>
-			<li><a href='https://www.facebook.com/PWYPAustralia'><span class='facebook'></span></a></li>
-			<li><a href='https://twitter.com/PWYPtweets'><span class='twitter'></span></a></li>
+			<li><a href='https://www.facebook.com/PWYPAustralia' target='_blank'><span class='facebook'></span></a></li>
+			<li><a href='https://twitter.com/PWYPtweets' target='_blank'><span class='twitter'></span></a></li>
 		</ul>	
 		<div class='clear'></div>
 	</nav>
@@ -86,7 +97,7 @@
 			<div class='globe'>
 				<div class='globe-mali globe-image'></div>
 				<div class='description'>
-					Residents of Sadiola village in Mali – like this young mother – have seen few benefits from the gold mine in their community. “Youth have no jobs and the men don’t have work at the mine,” says community leader Sora Sakiliba. “Thesedays, men usually have no money.”
+					Residents of Sadiola village in Mali – like this young mother – have seen few benefits from the gold mine in their community. “Youth have no jobs and the men don’t have work at the mine,” says community leader Sora Sakiliba. “Thesedays, men usually have no money.”<br/>Photo: Brett Eloff/Oxfam America.
 				</div>
 			</div>
 			<div class='clear'></div>
@@ -163,7 +174,8 @@
 			<div class='globe'>
 				<div class='description pull-right'>
 					The world's largest open pit gold mine, dubbed<br/>
-					'Super Pit', Kalgoorlie, Western Australia.
+					'Super Pit', Kalgoorlie, Western Australia.<br/>
+					Photo: Shutterstock.
 				</div>
 				<div class='globe-australia pull-left globe-image'></div>
 			</div>
@@ -195,10 +207,10 @@
 				<hr/>
 				<div class='social'>
 					<div class='pull-right'>
-						<span class='facebook'></span><span>BECOME A FAN ON FACEBOOK</span>
+						<span class='facebook'></span><span class='social-link-text'>BECOME A FAN ON FACEBOOK</span>
 					</div>
 					<div class='pull-left'>
-						<span class='twitter'></span><span>FOLLOW US ON TWITTER</span>
+						<span class='twitter'></span><span class='social-link-text'>FOLLOW US ON TWITTER</span>
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -206,7 +218,7 @@
 			<div class='globe'>
 				<div class='globe-solomon globe-image'></div>
 				<div class='description'>
-					Evan Nancy and Pauline Tsira play downstream<br/>from the gold mine at Be Muta village in the<br/>Solomon Islands.
+					Evan Nancy and Pauline Tsira play downstream<br/>from the gold mine at Be Muta village in the<br/>Solomon Islands.<br/>Photo: Lara McKinley/Oxfam Australia.
 				</div>
 			</div>
 		</div>
@@ -221,7 +233,7 @@
 		<div class='globe pull-right'>
 			<div class='globe-ghana globe-image'></div>
 			<div class='description'>
-				Godfried Ofori, a member of the Concerned<br/> Citizens association of Presta, Ghana, looks out<br/> over an open pit at the Bogoso / Prestea Mine.
+				Godfried Ofori, a member of the Concerned<br/> Citizens association of Presta, Ghana, looks out<br/> over an open pit at the Bogoso / Prestea Mine.<br/>Photo: Jane Hahn/Oxfam America.
 			</div>
 		</div>			
 		</div>
@@ -232,8 +244,8 @@
 		<div class='top'></div>
 		<span class='pull-left logo-black'>
 		</span>
-		<span class='pull-right bigger'>
-			For a list of member organisations, the latest news and resources please visit:<br/>
+		<span class='pull-right fat-content content-link'>
+			FOR A LIST OF MEMBER ORGANISATIONS, THE LATEST NEWS AND RESOURCES PLEASE VISIT:<br/>
 			<a href='http://www.publishwhatyoupay.org/where/coalitions/australia'>www.publishwhatyoupay.org/where/coalitions/australia</a>
 		</span>
 		<span class='clear'>
