@@ -3,29 +3,19 @@
 	
 	define('DEBUGMODE',0);
 	
-	define('SMTPHOST','ssl://smtp.gmail.com'); 			//Set the SMTP Address
-	define('SMTPPORT','465');
-	define('SMTPUSERNAME','nicolas.fenwick');
-	define('SMTPPASSWORD','Nic0las0319');
-	
-	define('HOST','localhost:3306');					//Set the Database
-	define('DBNAME','db1_pwypaustralia');
-	define('USER','root');
-	define('PASSWORD','');
-	
 	/**********************************
 	**PRODUCTION
 	**
 	************************************/
-	/**define('SMTPHOST','localhost'); 			//Set the SMTP Address
+	define('SMTPHOST','smtp.anchor.net.au'); 			//Set the SMTP Address
 	define('SMTPPORT','25');
-	define('SMTPUSERNAME','');
-	define('SMTPPASSWORD','8FH5wPWMh2neM3Cq');
+	define('SMTPUSERNAME','pwypaus');
+	define('SMTPPASSWORD','gg9tpBb3');
 	
 	define('HOST','localhost');					//Set the Database
-	define('DBNAME','db1_pwypaustralia');
-	define('USER','pwypadmin');
-	define('PASSWORD','8FH5wPWMh2neM3Cq');**/
+	define('DBNAME','pwypaus');
+	define('USER','pwypaus');
+	define('PASSWORD','wzxSfd6wR2');
 	
 	//////////////////////////////////////////////////////
 	
@@ -99,10 +89,10 @@ class Engine{
 	private $connectionHandler;
 	private $mailHandler;
 	
-	private $treasurerAddress = 'nicolas.fenwick@gmail.com';			//CHANGE ADDRESS HERE
-	private $assistantTreasurer = 'nicolas.fenwick@gmail.com';
+	private $treasurerAddress = 'claires@oxfam.org.au';			//CHANGE ADDRESS HERE
+	private $assistantTreasurer = 'claires@oxfam.org.au';
 	private $PWYPAddress = 'nicolas.fenwick@gmail.com';
-	private $minister = 'nicolas.fenwick@gmail.com';
+	private $minister = 'claires@oxfam.org.au';
 	
 	function __construct(){
 	//Create database connection
@@ -169,7 +159,8 @@ class Engine{
 	}
 	
 	function sendThanksEmail($email,$message,$firstname, $lastname){
-		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
+		$this->mailHandler->ClearAddresses();
+		$this->mailHandler->SetFrom('no-reply@pwypaustralia.org');
 		$this->mailHandler->AddAddress($email,$firstname.' '.$lastname);
 		$this->mailHandler->Subject = 'Publish What You Pay Australia thanks you';
 		$this->mailHandler->MsgHTML(file_get_contents('mis/email/thank-email.html'), dirname(__FILE__));
@@ -183,9 +174,10 @@ class Engine{
 	}
 	
 	function sendTreasurerEmail($email,$message,$firstname, $lastname){
+		$this->mailHandler->ClearAddresses();
 		$messageToSend = "<p>Dear Treasurer,</p>".$message."<p>Yours Sincerely.</p>";
 		
-		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
+		$this->mailHandler->SetFrom('no-reply@pwypaustralia.org');
 		//$this->mailHandler->AddReplyTo($email, $firstname.' '.$lastname);
 		$this->mailHandler->AddAddress($this->treasurerAddress);
 		$this->mailHandler->Subject = 'Please act and bring transparency to the mining, oil and gas industries';
@@ -199,9 +191,10 @@ class Engine{
 	}
 	
 	function sendAssistantTreasurerEmail($email,$message,$firstname, $lastname){
+		$this->mailHandler->ClearAddresses();
 		$messageToSend = "<p>Dear Assistant Treasurer,</p>".$message."<p>Yours Sincerely.</p>";
 		
-		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
+		$this->mailHandler->SetFrom('no-reply@pwypaustralia.org');
 		//$this->mailHandler->AddReplyTo($email, $firstname.' '.$lastname);
 		$this->mailHandler->AddAddress($this->assistantTreasurer);
 		$this->mailHandler->Subject = 'Please act and bring transparency to the mining, oil and gas industries';
@@ -215,9 +208,10 @@ class Engine{
 	}
 	
 	function sendMinisterEmail($email,$message,$firstname, $lastname){
+		$this->mailHandler->ClearAddresses();
 		$messageToSend = "<p>Dear Minister,</p>".$message."<p>Yours Sincerely.</p>";
 		
-		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
+		$this->mailHandler->SetFrom('no-reply@pwypaustralia.org');
 		//$this->mailHandler->AddReplyTo($email, $firstname.' '.$lastname);
 		$this->mailHandler->AddAddress($this->minister);
 		$this->mailHandler->Subject = 'Please act and bring transparency to the mining, oil and gas industries';
@@ -231,6 +225,7 @@ class Engine{
 	}
 	
 	function sendPWYPEmail($email,$message,$firstname, $lastname,$count){
+		$this->mailHandler->ClearAddresses();
 		$messageCount = '';
 		if(is_numeric($count)){
 			$messageCount = "<p>The action has been taken <strong> ".$count." </strong> times.</p>";
@@ -238,7 +233,7 @@ class Engine{
 		
 		$messageToSend = "<p>Hi Claire,</p><p>".$firstname." ".$lastname." has taken the e-action. This is the message that has been sent:</p>". $message . $messageCount;
 		
-		$this->mailHandler->SetFrom('no-reply@pwyp-australia.org');
+		$this->mailHandler->SetFrom('no-reply@pwypaustralia.org');
 		//$this->mailHandler->AddReplyTo($email,$firstname.' '.$lastname);
 		$this->mailHandler->AddAddress($this->PWYPAddress);
 		$this->mailHandler->Subject = $firstname.' '.$lastname.' has taken the e-action';

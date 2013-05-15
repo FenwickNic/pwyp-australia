@@ -13,17 +13,6 @@
 	<script src='mis/js/jquery-queryloader.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-40671337-1']);
-		_gaq.push(['_trackPageview']);
-
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
 	<!--[if IE 7]>
 		<link rel="stylesheet" media="all" href="mis/css/fontawesome-ie7.css" />
 	<![endif]-->
@@ -207,10 +196,10 @@
 				<hr/>
 				<div class='social'>
 					<div class='pull-right'>
-						<span class='facebook'></span><span class='social-link-text'>BECOME A FAN ON FACEBOOK</span>
+						<a href='https://www.facebook.com/PWYPAustralia' target='_blank'><span class='facebook'></span><span class='social-link-text'>BECOME A FAN ON FACEBOOK</span></a>
 					</div>
 					<div class='pull-left'>
-						<span class='twitter'></span><span class='social-link-text'>FOLLOW US ON TWITTER</span>
+						<a href='https://twitter.com/PWYPtweets' target='_blank'><span class='twitter'></span><span class='social-link-text'>FOLLOW US ON TWITTER</span></a>
 					</div>
 					<div class='clear'></div>
 				</div>

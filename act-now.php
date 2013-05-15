@@ -60,7 +60,7 @@
 			<div style='padding-top:50px;display:inline-block;width:70%;text-align:justify;margin:0px 5%'><h1>Call on the Australian Government to act</h1>
 			<p>Income from minerals and oil and gas should be one of the greatest sources of wealth for resource-rich developing countries. But almost 3.5 billion people living in these countries often don’t receive it.</p>
 			<p>Laws similar to that recently introduced by the United States Government and forthcoming in the European Union could change this. These laws require mining, oil and gas companies to report the taxes and royalties they pay government in the countries where they are mining or extracting oil and gas. Such legislation could help citizens of developing countries to hold their governments to account for these revenues.</p>
-			<p>Please send a message to the Treasurer, Wayne Swan and Assistant Treasurer, David Bradbury, to say that you would like to see similar legislation introduced in Australia.</p>
+			<p>Please send a message to the Minister for Resources and Energy, Gary Gray, the Treasurer, Wayne Swan and Assistant Treasurer, David Bradbury, to say that you would like to see similar legislation introduced in Australia.</p>
 			</div>
 			<div class='chart-wrapper' style='display:inline-block;text-align:center;'>
 				<div>GOAL:<span id='goal'></span></div>
