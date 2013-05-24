@@ -11,6 +11,7 @@
 	<script src='mis/js/jquery-1.7.1.min.js' type='text/javascript'></script>
 	<script src='mis/js/orangebox.min.js' type='text/javascript'></script>
 	<script src='mis/js/jquery-queryloader.js' type='text/javascript'></script>
+	<script src='mis/js/jquery.placeholder.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
 	<!--[if IE 7]>
@@ -244,6 +245,7 @@
 	oB.settings.contentMaxSize = [1,1];
 
 $(document).ready(function(){
+	$('input, textarea').placeholder();
 	$('.form .btn').click(function(){
 		var firstname = $(this).parents('.form').find('input[name="firstname"]').val();
 		var lastname = $(this).parents('.form').find('input[name="lastname"]').val();

@@ -30,6 +30,7 @@
 	<script src='mis/js/jquery.knob.js' type='text/javascript'></script>
 	<script src='mis/js/jquery.validate.min.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/main.css">
+	<script src='mis/js/jquery.placeholder.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="mis/css/orangebox.css">
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -158,7 +159,7 @@ This is a step towards reducing tax evasion and other forms of corruption by mak
 <script type='text/javascript'>
 $(document).ready(function(){
 	$('#loader').hide();
-	
+	$('input, textarea').placeholder();
 	$('#form').validate({
 		rules:{
 			'form-firstname':{
